@@ -77,5 +77,11 @@
     <ClInclude Include="varlen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="course_registration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="student.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

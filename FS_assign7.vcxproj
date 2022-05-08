@@ -111,6 +111,7 @@
   <ItemGroup>
     <ClInclude Include="buffile.h" />
     <ClInclude Include="coseq.h" />
+    <ClInclude Include="course_registration.h" />
     <ClInclude Include="iobuffer.h" />
     <ClInclude Include="ledger.h" />
     <ClInclude Include="ledgpost.h" />
@@ -119,6 +120,7 @@
     <ClInclude Include="recfile.h" />
     <ClInclude Include="strclass.h" />
     <ClInclude Include="strlist.h" />
+    <ClInclude Include="student.h" />
     <ClInclude Include="varlen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

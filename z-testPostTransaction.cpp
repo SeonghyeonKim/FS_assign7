@@ -3,11 +3,14 @@
 Ledger 대신에 Student, Journal 대신에 course registration class를 정의한다.
 */
 
+
 #include "recfile.h"
 #include "stdlib.h"
 #include <fstream>
 #include <string.h>
 #include "length.h"
+#include "student.h"
+#include "course_registration.h"
 class TranscriptProcess : public MasterTransactionProcess<int>
 	// Transcript processing of a Transcript file and a journal file
 	// the item type is int to represent an account number
@@ -33,11 +36,11 @@ protected:
 	// members
 	int MonthNumber; // number of month to be processed
 	LengthFieldBuffer Lbuffer, Jbuffer; // buffers for files
-	RecordFile<Transcript> TranscriptFile; // list 1
-	RecordFile<Journal> JournalFile;// list 2
+	RecordFile<Student> TranscriptFile; // list 1
+	RecordFile<CourseResistration> JournalFile;// list 2
 	int AccountNumber[3]; // current item in each list
-	Transcript Transcript; // current Transcript object
-	Journal journal; // current journal object
+	Student student; // current Student object
+	CourseResistration CourseR; // current Course Resistration object
 	ofstream OutputList; // text output file for post method
 	static int LowAcct;// lower than the lowest account number
 	static int HighAcct;// higher than the highest account number
@@ -47,14 +50,31 @@ protected:
 };
 int main(void)
 {
-	Student L1(101, "Checking Account #1", 1032.57, 1032.57, 1032.57);
-	...
+	//
+	Student L1("A1", "A2", "A3", "A4", "5");
+	Student L2("B1", "B2", "B3", "B4", "5");
+	Student L3("C1", "C2", "C3", "C4", "5");
+	Student L4("D1", "D2", "D3", "D4", "5");
+	Student L5("E1", "E2", "E3", "E4", "5");
+	Student L6("F1", "F2", "F3", "F4", "5");
+	Student L7("G1", "G2", "G3", "G4", "5");
+	Student L8("H1", "H2", "H3", "H4", "5");
+	Student L9("I1", "I2", "I3", "I4", "5");
+
+	//
+	CourseResistration J1("CA1", "SA2", 3, 3.5);
+	CourseResistration J2("CB1", "SB2", 3, 3.5);
+	CourseResistration J3("CC1", "SC2", 3, 3.5);
+	CourseResistration J4("CD1", "SD2", 3, 3.5);
+	CourseResistration J5("CE1", "SE2", 3, 3.5);
+	CourseResistration J6("CF1", "SF2", 3, 3.5);
+	CourseResistration J7("CG1", "SG2", 3, 3.5);
+	CourseResistration J8("CH1", "SH2", 3, 3.5);
+	CourseResistration J9("CI1", "SI2", 3, 3.5);
 
 
-	CourseRegistration J1(101, 1271, "02/02/86", "Auto expense", -78.70);
-	...
 	LengthFieldBuffer Lbuffer;
-	RecordFile<Transcript> TranscriptFile(Lbuffer);
+	RecordFile<Student> TranscriptFile(Lbuffer);
 	int result = TranscriptFile.Create("Transcript.dat", ios::out);
 	cout << "Create file " << result << endl;
 	if (!result)
@@ -63,11 +83,11 @@ int main(void)
 		return 0;
 	}
 	TranscriptFile.Write(L1);
-	...
+	//
 	TranscriptFile.Close();
 
 	LengthFieldBuffer Jbuffer;
-	RecordFile<Journal> journalFile(Jbuffer);
+	RecordFile<CourseResistration> journalFile(Jbuffer);
 	int flag = journalFile.Create("journal.dat", ios::out);
 	cout << "Create file " << flag << endl;
 	if (!flag)
@@ -76,23 +96,23 @@ int main(void)
 		return 0;
 	}
 	journalFile.Write(J1);
-    ....
+    //
 	journalFile.Close();
 
 	int res;
-	RecordFile<Transcript> lFile(Lbuffer);
-	lFile.Open("Transcript.dat", ios::in);
-	Transcript Transcript;
+	RecordFile<Student> lFile(Lbuffer);
+	lFile.Open("Student.dat", ios::in);
+	Student Student;
 	while (1)
 	{
-		res = lFile.Read(Transcript);
+		res = lFile.Read(Student);
 		if (res <= 0) break;
-		cout << "Transcript" << endl;
-		Transcript.Print(cout);
+		cout << "Student" << endl;
+		Student.Print(cout);
 	}
-	RecordFile<Journal> jFile(Jbuffer);
+	RecordFile<CourseResistration> jFile(Jbuffer);
 	jFile.Open("journal.dat", ios::in);
-	Journal journal;
+	CourseResistration journal;
 	while (1)
 	{
 		res = jFile.Read(journal);

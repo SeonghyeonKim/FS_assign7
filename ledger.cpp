@@ -1,4 +1,5 @@
-// ledger.cpp
+// 
+.cpp
 #include <fstream>
 #include <iomanip>
 #include <string.h>
@@ -65,7 +66,7 @@ ostream & Ledger::Print (ostream & stream)
 
 ostream & Ledger::PrintHeader (ostream & stream)
 {// print the report header for this account
-	stream <<Acct<<'\t'<<Title<<endl;
+	stream << Acct << '\t' << Title << endl;
 	return stream;
 }
 
